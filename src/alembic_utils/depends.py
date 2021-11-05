@@ -22,7 +22,9 @@ def solve_resolution_order(sess: Session, entities):
 
     # Resolve the entities with 0 dependencies first (faster)
     logger.info("Resolving entities with no dependencies")
+    logger.info(f'Number of entities: {len(entities)}')
     for entity in entities:
+        logger.info(f'Resolving {entity.signature}')
         try:
             with simulate_entity(sess, entity):
                 resolved.append(entity)
